@@ -1,0 +1,21 @@
+<div class="script-editor-container">
+    <div>
+        <pep-button classNames="lock-events" sizeType="xs" iconName="system_move"></pep-button>
+    </div>
+    <div *ngIf="title !== ''" class="title-container">
+        <span class="body-sm ellipsis">{{id + 1}}.&nbsp;</span>
+        <span class="body-sm color-link bold ellipsis" title="{{configuration?.scripts[id].title}}">{{configuration?.scripts[id].title}}</span>
+    </div>
+    <div class="actions">
+        <pep-button classNames="caution" sizeType="xs" iconName="system_bin" (buttonClick)="onRemoveClick();"></pep-button>
+        <pep-button *ngIf="id != configuration?.scriptConfig?.editIndex" sizeType="xs" iconName="arrow_down" (buttonClick)="onEditClick();"></pep-button>
+        <pep-button *ngIf="id == configuration?.scriptConfig?.editIndex" sizeType="xs" iconName="arrow_up" (buttonClick)="onEditClick();"></pep-button>
+    </div>
+    <div class="editorCont" *ngIf="id == configuration?.scriptConfig?.editIndex">
+        <label class="body-xs normal ellipsis">{{'ACTIONS.CHOOSE_SCRIPT' | translate}}</label>
+        <pep-button class="script-button" (buttonClick)="openScriptPickerDialog();"
+        [value]="configuration?.scripts[id].script ? configuration?.scripts[id].script?.runScriptData?.ScriptKey : ('ACTIONS.CHOOSE_SCRIPT' | translate)" ></pep-button> 
+        <pep-textbox [mandatory]="true" [label]="'EDITOR.KEY' | translate" type="string" [value]="configuration?.scripts[id].key" 
+        (valueChange)="onScriptFieldChange('key',$event)"></pep-textbox>
+    </div>
+</div>

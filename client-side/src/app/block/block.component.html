@@ -1,0 +1,6 @@
+<div id="scriptBlockCont" [style.height]="configuration?.scriptConfig?.matchContHeight ? '100%' : configuration?.scriptConfig?.height + 'rem'">
+    <mat-icon *ngIf="!configuration?.scriptConfig?.hideLoader" class="separator pep-spacing-element">
+        <pep-icon [name]="'system_processing'">
+        </pep-icon>
+    </mat-icon>
+</div>

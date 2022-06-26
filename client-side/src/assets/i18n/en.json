@@ -1,0 +1,33 @@
+{
+    "TABS": {
+        "GENERAL": "General",
+        "CONTENT": "Content"
+    },
+
+    "EDITOR": {
+        "DESC1": "Runs a script according to parameters on the page.",
+        "DESC2": "scriptKey - is used for finding the script that will be lunched.",
+        "HIDE_LOADER": "Hide Loader",
+        "HIDE_LOADER_DESC": "This will not show any indication on the page",
+        "MATCH_CONT_HEIGHT": "Match Container Height",
+        "MATCH_CONT_HEIGHT_DESC": "Will stretch the block to section height",
+        "HEIGHT": "Height (rem)",
+        "HEIGHT_DESC": "The height of the UI (if not hidden)",
+        "DELAY_DURATION": "Min Delay Duration (sec)",
+        "DELAY_DURATION_DESC": "The delay duration before the script is executed. \n means that the script executes immediately",
+        "SCRIPTS": "Scripts",
+        "KEY": "Key",
+        "KEY_ALREADY_EXIST": "Key already exits"
+    },
+
+    "ACTIONS": {
+        "ADD_SCRIPT": "Add New Script",
+        "CHOOSE_SCRIPT": "Choose Script",
+        "NOTICE": "Notice"
+    },
+
+    "NUMBERS": ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth"]
+}
+
+
+

@@ -1,0 +1,28 @@
+@use '~@pepperi-addons/ngx-lib/src/core/style/abstracts/variables' as ngx-variables;
+@use '~@pepperi-addons/ngx-lib/src/core/style/abstracts/functions' as ngx-functions;
+@use '~@pepperi-addons/ngx-lib/src/core/style/abstracts/mixins' as ngx-mixins;
+
+#scriptBlockCont{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    .mat-icon{
+        height: ngx-variables.$lh-2xl;
+        width: ngx-variables.$lh-2xl;
+        animation: spin 2s linear infinite;
+        
+        ::ng-deep{
+            svg{
+                fill: ngx-functions.get-pep-color(color-user-primary, color-base)
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
