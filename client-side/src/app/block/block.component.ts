@@ -37,55 +37,53 @@ export class ScriptBlockClientComponent implements OnInit {
         
         // look for script_kes on the query , 
         // will not run the script without it
-        // TODO - NEED TO TAKE THE PARAMS FROM THE PAGE PARAMETERS.
-        this.routeParams.queryParams.subscribe( queryParam => {
-            const scriptKeys = queryParam['script_keys'] || undefined;
-            if(scriptKeys != undefined){ 
-                //list of screen who should run (match key on the query string)
-                let scriptToRun = [];
-                // take the param json and change it to object
-                let keys = scriptKeys.split(',') || [];
-                keys.forEach(key => {
-                    this.configuration.scripts.forEach(scr => {
-                        if(key === scr.key){
-                            scriptToRun.push(scr);
-                        }
-                    })
-                });
+        if(this._parameters?.script_keys){
+            //list of screen who should run (match key on the query string)
+            let scriptToRun = [];
+            // take the param json and change it to object
+            let keys = this._parameters?.script_keys.split(',') || [];
+            keys.forEach(key => {
+                this.configuration.scripts.forEach(scr => {
+                    if(key === scr.key){
+                        scriptToRun.push(scr);
+                    }
+                })
+            });
 
-                setTimeout(() => {
-                    //const runScript Data = this.card?.script?.runScriptData;
-                    
-                    scriptToRun.forEach(scr => {
-                         const runScriptData = scr?.script?.runScriptData || null;
-                         if (runScriptData) {
-                             // Implement script 
-                             this.runScript(scr.script.runScriptData);
-                         }
-                     });
-                 },(parseInt(this.configuration?.scriptConfig?.minDelay || '1') * 1000));
-            }
-        });
-        
-      
+            setTimeout(() => {
+                scriptToRun.forEach(scr => {
+                     const runScriptData = scr?.script?.runScriptData || null;
+                     if (runScriptData) {
+                         // Implement script 
+                         this.runScript(scr.script.runScriptData);
+                     }
+                 });
+             },(parseInt(this.configuration?.scriptConfig?.minDelay || '1') * 1000));  
+        } 
     }
 
     private getScriptParams(scriptData: any) {
         const res = {};
-        
-        if (scriptData) {
-            // Go for all the script data and parse the params.
-            Object.keys(scriptData).forEach(paramKey => {
-                const scriptDataParam = scriptData[paramKey];
+        const params = Object.entries(this._parameters) || [];
+        if(this._parameters)
+        params.forEach(([key, value]) => {
+            if(key != 'script_keys'){
+                res[key] = value; 
+            } 
+        });
+        // if (scriptData) {
+        //     // Go for all the script data and parse the params.
+        //     Object.keys(scriptData).forEach(paramKey => {
+        //         const scriptDataParam = scriptData[paramKey];
                 
-                // If the param source is dynamic get the value from the _parameters with the param value as key, else it's a simple param.
-                if (scriptDataParam.Source === 'dynamic') {
-                    res[paramKey] = this._parameters[scriptDataParam.Value] || '';
-                } else { // if (scriptDataParam.Source === 'static')
-                    res[paramKey] = scriptDataParam.Value;
-                }
-            });
-        }
+        //         // If the param source is dynamic get the value from the _parameters with the param value as key, else it's a simple param.
+        //         if (scriptDataParam.Source === 'dynamic') {
+        //             res[paramKey] = this._parameters[scriptDataParam.Value] || '';
+        //         } else { // if (scriptDataParam.Source === 'static')
+        //             res[paramKey] = scriptDataParam.Value;
+        //         }
+        //     });
+        // }
 
         return res;
     }

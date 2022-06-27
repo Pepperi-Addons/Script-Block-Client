@@ -13,9 +13,9 @@ export interface IScriptClient{
 export class ScriptBlockEditor {
     editIndex: string = '-1';
     hideLoader: boolean = false;
-    matchContHeight: boolean = false;
+    matchContHeight: boolean = true;
     height: string = '15';
-    minDelay: string = '1'
+    minDelay: string = '0'
 }
 
 export class ScriptEditor {

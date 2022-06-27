@@ -135,11 +135,18 @@ export class ScriptBlockClientEditorComponent implements OnInit {
     }
 
     private updatePageConfigurationObject() {
-        const params = this.getPageConfigurationParametersNames();
+        //const params = this.getPageConfigurationParametersNames();
         this._pageConfiguration = this.defaultPageConfiguration;
 
+        this._pageConfiguration.Parameters.push({
+            Key: '*',
+            Type: 'String',
+            Consume: true,
+            Produce: false
+        });
+        
         // Add the parameter to page configuration.
-        for (let paramIndex = 0; paramIndex < params.length; paramIndex++) {
+        /*for (let paramIndex = 0; paramIndex < params.length; paramIndex++) {
             const param = params[paramIndex];
             
             this._pageConfiguration.Parameters.push({
@@ -148,7 +155,7 @@ export class ScriptBlockClientEditorComponent implements OnInit {
                 Consume: true,
                 Produce: false
             });
-        }
+        }*/
 
         this.hostEvents.emit({
             action: 'set-page-configuration',
