@@ -1,6 +1,6 @@
 {
     "AddonUUID": "21d174ae-a8dc-4842-a40d-1437a677abcf",
-    "AddonVersion": "0.0.7",
+    "AddonVersion": "0.7.113",
     "DebugPort": 4500,
     "WebappBaseUrl": "https://app.sandbox.pepperi.com",
     "DefaultEditor": "main",
@@ -11,12 +11,8 @@
     "Editors": [
         "main"
     ],
-    "Assets": [
-        "en.json",
-        "en.ngx-lib.json"
-    ],
     "PublishConfig": {
-        "ClientStack": "ng10",
+        "ClientStack": "ng14",
         "Dependencies": {
             "cpi-node-scripts": "0.0.87"
         },

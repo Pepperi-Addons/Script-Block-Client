@@ -12,8 +12,6 @@ import { PepTextboxModule } from '@pepperi-addons/ngx-lib/textbox';
 import { PepCheckboxModule } from '@pepperi-addons/ngx-lib/checkbox';
 
 import { config } from '../addon.config';
-import { HttpClient } from '@angular/common/http';
-
 
 @NgModule({
     declarations: [ScriptBlockClientEditorComponent],
@@ -25,12 +23,11 @@ import { HttpClient } from '@angular/common/http';
         PepTextboxModule,
         PepCheckboxModule,
         ScriptEditorModule,
-
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
                 useFactory: (addonService: PepAddonService) => 
-                    PepAddonService.createMultiTranslateLoader(addonService, ['ngx-lib', 'ngx-composite-lib'], config.AddonUUID),
+                    PepAddonService.createMultiTranslateLoader(config.AddonUUID, addonService, ['ngx-lib', 'ngx-composite-lib']),
                 deps: [PepAddonService]
             }, isolate: false
         }),

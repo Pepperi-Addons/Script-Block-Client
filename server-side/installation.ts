@@ -42,7 +42,7 @@ async function createBlockRelation(client: Client): Promise<any> {
             Name: blockName,
             Description: `${blockName} block`,
             Type: "NgComponent",
-            SubType: "NG11",
+            SubType: "NG14",
             AddonUUID: client.AddonUUID,
             AddonRelativeURL: filename,
             ComponentName: `${blockName}Component`, // This is should be the block component name (from the client-side)
