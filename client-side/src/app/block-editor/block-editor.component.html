@@ -1,15 +1,15 @@
 <mat-tab-group  #tabGroup class="editor-tabs" animationDuration="0ms">
     <mat-tab label="{{'TABS.GENERAL' | translate}}">
-        <label class="body-xs normal ellipsis">{{'EDITOR.DESC1' | translate}}</label>
-        <label class="body-xs normal ellipsis">{{'EDITOR.DESC2' | translate}}</label>
+        <span class="body-xs normal">{{'EDITOR.DESC1' | translate}}</span>
+        <span class="body-xs normal">{{'EDITOR.DESC2' | translate}}</span>
 
         <div class="cb-container">
             <pep-checkbox [value]="configuration?.scriptConfig?.hideLoader" [label]="'EDITOR.HIDE_LOADER' | translate" [renderTitle]="false" (valueChange)="onScriptBlockFieldChange('hideLoader',$event)"></pep-checkbox>
-            <label class="body-xs normal ellipsis">{{'EDITOR.HIDE_LOADER_DESC' | translate}}</label>
+            <span class="body-xs normal">{{'EDITOR.HIDE_LOADER_DESC' | translate}}</span>
         </div>
         <div class="cb-container">
             <pep-checkbox [value]="configuration?.scriptConfig?.matchContHeight" [label]="'EDITOR.MATCH_CONT_HEIGHT' | translate" [renderTitle]="false" (valueChange)="onScriptBlockFieldChange('matchContHeight',$event)"></pep-checkbox>
-            <label class="body-xs normal ellipsis">{{'EDITOR.MATCH_CONT_HEIGHT_DESC' | translate}}</label>
+            <span class="body-xs normal">{{'EDITOR.MATCH_CONT_HEIGHT_DESC' | translate}}</span>
         </div>
         <pep-textbox [label]="'EDITOR.HEIGHT' | translate" [disabled]="configuration?.scriptConfig?.matchContHeight" type="decimal" [value]="configuration?.scriptConfig?.height" (valueChange)="onScriptBlockFieldChange('height',$event)">
         </pep-textbox>
