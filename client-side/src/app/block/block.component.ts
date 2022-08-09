@@ -13,8 +13,7 @@ export class ScriptBlockClientComponent implements OnInit {
     @Input()
     set hostObject(value: IHostObject) {
         this._configuration = value?.configuration;
-        this._parameters = value?.parameters || {};
-
+        this._parameters = value?.pageParameters || {};
     }
 
     private _parameters: any;
@@ -34,7 +33,6 @@ export class ScriptBlockClientComponent implements OnInit {
 
         // When finish load raise block-loaded.
         this.hostEvents.emit({action: 'block-loaded'});
-        
         // look for script_kes on the query , 
         // will not run the script without it
         if(this._parameters?.script_keys){

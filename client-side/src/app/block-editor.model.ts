@@ -1,6 +1,7 @@
 
 
 export interface IHostObject {
+    pageParameters: {};
     configuration: IScriptClient;
     parameters: any;
 }
