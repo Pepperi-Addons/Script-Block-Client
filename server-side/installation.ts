@@ -24,7 +24,10 @@ export async function uninstall(client: Client, request: Request): Promise<any> 
 }
 
 export async function upgrade(client: Client, request: Request): Promise<any> {
-    return {success:true,resultObject:{}}
+    // For block template uncomment this.
+    const res = await createBlockRelation(client);
+    // return res;
+    return {success: res.success, errorMessage: res.resultObject};
 }
 
 export async function downgrade(client: Client, request: Request): Promise<any> {
@@ -35,7 +38,8 @@ async function createBlockRelation(client: Client): Promise<any> {
     try {
         // TODO: change to block name (this is the unique relation name and the description that will be on the block).
         const blockName = 'ScriptBlockClient';
-        const filename = `file_${client.AddonUUID.replace(/-/g, '_').toLowerCase()}`;
+        // const filename = `file_${client.AddonUUID.replace(/-/g, '_').toLowerCase()}`;
+        const filename = `file_${client.AddonUUID}`;
 
         const pageComponentRelation: Relation = {
             RelationName: 'PageBlock',
@@ -49,6 +53,9 @@ async function createBlockRelation(client: Client): Promise<any> {
             ModuleName: `${blockName}Module`, // This is should be the block module name (from the client-side)
             EditorComponentName:`${blockName}EditorComponent`,
             EditorModuleName:`${blockName}EditorModule`,
+            ElementsModule: 'WebComponents',
+            ElementName: `script-element-${client.AddonUUID}`,
+            EditorElementName: `script-editor-element-${client.AddonUUID}`,
             Schema: {
                 "Fields": {
                     "scriptConfig":{
