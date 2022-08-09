@@ -30,9 +30,6 @@ export class ScriptBlockClientComponent implements OnInit {
      }
 
     ngOnInit(): void {
-
-        // When finish load raise block-loaded.
-        this.hostEvents.emit({action: 'block-loaded'});
         // look for script_kes on the query , 
         // will not run the script without it
         if(this._parameters?.script_keys){
