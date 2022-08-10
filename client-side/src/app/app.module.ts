@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { Component, DoBootstrap, Injector, NgModule } from '@angular/core';
+import { Component, DoBootstrap, Injector, NgModule, Type } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
@@ -55,9 +55,15 @@ export class AppModule implements DoBootstrap {
         this.pepAddonService.setDefaultTranslateLang(translate);
     }
 
+    private defineCustomElement(elementName: string, component: Type<any>) {
+        if (!customElements.get(elementName)) {  
+            customElements.define(elementName, createCustomElement(component, {injector: this.injector}));
+        }
+    }
+
     ngDoBootstrap() {
-        customElements.define(`script-element-${config.AddonUUID}`, createCustomElement(ScriptBlockClientComponent, {injector: this.injector}));
-        customElements.define(`script-editor-element-${config.AddonUUID}`, createCustomElement(ScriptBlockClientEditorComponent, {injector: this.injector}));
+        this.defineCustomElement(`script-element-${config.AddonUUID}`, ScriptBlockClientComponent);
+        this.defineCustomElement(`script-editor-element-${config.AddonUUID}`, ScriptBlockClientEditorComponent);
     }
 }
 
