@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { Component, DoBootstrap, Injector, NgModule, Type } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { createCustomElement } from '@angular/elements';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
@@ -23,6 +24,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         ScriptBlockClientModule,
         ScriptBlockClientEditorModule,
         TranslateModule.forRoot({
