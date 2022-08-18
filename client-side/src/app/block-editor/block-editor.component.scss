@@ -18,7 +18,7 @@
         display: none;
     }
     .mat-tab-labels {
-        display: grid;
+        display: grid !important;
         grid-template-columns: 1fr 1fr;
 
         .mat-tab-label {
