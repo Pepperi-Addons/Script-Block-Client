@@ -23,6 +23,7 @@
     "ACTIONS": {
         "ADD_SCRIPT": "Add New Script",
         "CHOOSE_SCRIPT": "Choose Script",
+        "DEFAULT_SCRIPT": "Default Script",
         "NOTICE": "Notice"
     },
 

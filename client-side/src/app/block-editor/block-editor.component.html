@@ -4,11 +4,11 @@
         <span class="body-xs normal">{{'EDITOR.DESC2' | translate}}</span>
 
         <div class="cb-container">
-            <pep-checkbox [value]="configuration?.scriptConfig?.hideLoader" [label]="'EDITOR.HIDE_LOADER' | translate" [renderTitle]="false" (valueChange)="onScriptBlockFieldChange('hideLoader',$event)"></pep-checkbox>
+            <pep-checkbox class="checkbox-as-title" [value]="configuration?.scriptConfig?.hideLoader" [label]="'EDITOR.HIDE_LOADER' | translate" [renderTitle]="false" (valueChange)="onScriptBlockFieldChange('hideLoader',$event)"></pep-checkbox>
             <span class="body-xs normal">{{'EDITOR.HIDE_LOADER_DESC' | translate}}</span>
         </div>
         <div class="cb-container">
-            <pep-checkbox [value]="configuration?.scriptConfig?.matchContHeight" [label]="'EDITOR.MATCH_CONT_HEIGHT' | translate" [renderTitle]="false" (valueChange)="onScriptBlockFieldChange('matchContHeight',$event)"></pep-checkbox>
+            <pep-checkbox class="checkbox-as-title" [value]="configuration?.scriptConfig?.matchContHeight" [label]="'EDITOR.MATCH_CONT_HEIGHT' | translate" [renderTitle]="false" (valueChange)="onScriptBlockFieldChange('matchContHeight',$event)"></pep-checkbox>
             <span class="body-xs normal">{{'EDITOR.MATCH_CONT_HEIGHT_DESC' | translate}}</span>
         </div>
         <pep-textbox [label]="'EDITOR.HEIGHT' | translate" [disabled]="configuration?.scriptConfig?.matchContHeight" type="decimal" [value]="configuration?.scriptConfig?.height" (valueChange)="onScriptBlockFieldChange('height',$event)">

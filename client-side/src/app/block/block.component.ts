@@ -30,31 +30,36 @@ export class ScriptBlockClientComponent implements OnInit {
      }
 
     ngOnInit(): void {
-        // look for script_kes on the query , 
-        // will not run the script without it
-        if(this._parameters?.script_keys){
-            //list of screen who should run (match key on the query string)
-            let scriptToRun = [];
-            // take the param json and change it to object
-            let keys = this._parameters?.script_keys.split(',') || [];
-            keys.forEach(key => {
-                this.configuration.scripts.forEach(scr => {
-                    if(key === scr.key){
-                        scriptToRun.push(scr);
-                    }
-                })
-            });
+        //check if has scripts
+        if(this.configuration?.scripts?.length){
+            // look for ScriptKey on the query ,  will not run the script without it
+            //let key = this._parameters?.ScriptKey || this.getScript(this._parameters?.ScriptKey);
+            let scriptToRun: ScriptEditor = this.getScript(this._parameters?.ScriptKey);
 
-            setTimeout(() => {
-                scriptToRun.forEach(scr => {
-                     const runScriptData = scr?.script?.runScriptData || null;
-                     if (runScriptData) {
-                         // Implement script 
-                         this.runScript(scr.script.runScriptData);
-                     }
-                 });
-             },(parseInt(this.configuration?.scriptConfig?.minDelay || '1') * 1000));  
-        } 
+            if(scriptToRun){
+                setTimeout(() => {
+                 
+                        const runScriptData = scriptToRun?.script?.runScriptData || null;
+                        if (runScriptData) {
+                            // Implement script 
+                            this.runScript(scriptToRun.script.runScriptData);
+                        }
+                    
+                },(parseInt(this.configuration?.scriptConfig?.minDelay || '1') * 1000));
+            }
+        }
+    }
+
+    private getScript(scriptKey: string = null){
+        //check for script key equal to ScriptKey param
+        //if not check if there is default script on the block
+        let  script = this.configuration.scripts.filter(scr => scr.key === scriptKey);
+        if(script.length == 0){
+                script = this.configuration.scripts.filter(scr => scr.isDefaultScript === true);
+        }
+
+        return script[0];
+     
     }
 
     private getScriptParams(scriptData: any) {

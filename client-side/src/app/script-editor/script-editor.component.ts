@@ -71,7 +71,12 @@ export class ScriptEditorComponent implements OnInit {
         };
 
         const value = key.indexOf('image') > -1 && key.indexOf('src') > -1 ? event.fileStr :  event && event.source && event.source.key ? event.source.key : event && event.source && event.source.value ? event.source.value :  event;
-  
+        
+        if(key === 'isDefaultScript'){
+            this.configuration.scripts.forEach(scr => {
+                scr.isDefaultScript = scr.id !== parseInt(this.id) ?  false : value;
+            });
+        }
 
         if(key.indexOf('.') > -1){
             let keyObj = key.split('.');

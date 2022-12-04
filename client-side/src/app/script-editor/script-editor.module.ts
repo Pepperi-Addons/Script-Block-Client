@@ -5,6 +5,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PepButtonModule } from '@pepperi-addons/ngx-lib/button';
 import { PepMenuModule } from '@pepperi-addons/ngx-lib/menu';
 import { PepTextboxModule } from '@pepperi-addons/ngx-lib/textbox';
+import { PepCheckboxModule } from '@pepperi-addons/ngx-lib/checkbox';
 import { TranslateModule, TranslateLoader, TranslateService, TranslateStore } from '@ngx-translate/core';
 import { PepAddonService, PepNgxLibModule } from '@pepperi-addons/ngx-lib';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -40,6 +41,7 @@ const pepIcons = [
         PepButtonModule,
         PepMenuModule,
         PepTextboxModule,
+        PepCheckboxModule,
         PepNgxLibModule,
         MatDialogModule,
         PepNgxCompositeLibModule,

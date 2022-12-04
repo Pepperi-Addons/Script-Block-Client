@@ -1,9 +1,9 @@
-<div class="script-editor-container">
+<div class="script-editor-container" [ngClass]="[configuration?.scripts[id].isDefaultScript ? 'defaultScript' : '']">
     <div>
         <pep-button classNames="lock-events" sizeType="xs" iconName="system_move"></pep-button>
     </div>
     <div *ngIf="title !== ''" class="title-container">
-        <span class="body-sm ellipsis">{{id + 1}}.&nbsp;</span>
+        <span class="body-sm ellipsis">{{id + 1}}.&nbsp;{{configuration?.scripts[id]?.key || ''}}</span>
         <span class="body-sm color-link bold ellipsis" title="{{configuration?.scripts[id].title}}">{{configuration?.scripts[id].title}}</span>
     </div>
     <div class="actions">
@@ -17,5 +17,8 @@
         [value]="configuration?.scripts[id].script ? configuration?.scripts[id].script?.runScriptData?.ScriptKey : ('ACTIONS.CHOOSE_SCRIPT' | translate)" ></pep-button> 
         <pep-textbox [mandatory]="true" [label]="'EDITOR.KEY' | translate" type="string" [value]="configuration?.scripts[id].key" 
         (valueChange)="onScriptFieldChange('key',$event)"></pep-textbox>
+        <pep-checkbox class="checkbox-no-background" [value]="configuration?.scripts[id].isDefaultScript" [label]="'ACTIONS.DEFAULT_SCRIPT' | translate" [renderTitle]="false" 
+            (valueChange)="onScriptFieldChange('isDefaultScript',$event)"
+            [disabled]="!configuration?.scripts[id]?.script?.runScriptData?.ScriptKey"></pep-checkbox>
     </div>
 </div>

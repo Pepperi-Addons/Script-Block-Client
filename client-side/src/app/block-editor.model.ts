@@ -23,4 +23,5 @@ export class ScriptEditor {
     id: number;
     key: string = '';
     script: any;
+    isDefaultScript: boolean = false;
 }
