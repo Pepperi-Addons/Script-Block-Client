@@ -21,12 +21,15 @@
     </mat-tab>
     <!-- <mat-tab cdkDropListGroup label="{{'TABS.CONTENT' | translate}}"></mat-tab> -->
     <mat-tab  label="{{'TABS.CONTENT' | translate}}">
+        <div class="script-cont" (cdkDropListDropped)="drop($event)"  cdkDropList>
                 <script-editor *ngFor="let currentScript of configuration?.scripts;" 
                         [id]="currentScript?.id" [showActions]="true" (hostEvents)='onHostObjectChange($event)'
                         (editClick)='onScriptEditClick($event);' (removeClick)='onScriptRemoveClick($event);'
                         [configuration]="configuration" [pageParameters]="pageParameters"
-                        style="cursor: grab;">
+                        style="cursor: grab;" [isDraggable]="true" cdkDrag [cdkDragDisabled]="currentScript?.id == configuration?.scriptConfig?.editIndex"
+                        (cdkDragStarted)="onDragStart($event)" (cdkDragEnded)="onDragEnd($event)">
                 </script-editor>
+            </div>
                 <pep-button class="add-content-button" value="{{'ACTIONS.ADD_SCRIPT' | translate}}" styleType="regular" iconName="number_plus" iconPosition="end"
                         (buttonClick)="addNewScriptClick()"></pep-button>
         </mat-tab>

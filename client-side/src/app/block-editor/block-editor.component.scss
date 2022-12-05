@@ -26,11 +26,17 @@
                 overflow: unset;
 
                 .mat-tab-body-content {
-                    overflow: unset;
-                    display: flex;
-                    flex-direction: column;
-                    padding-inline: 0;
-                    row-gap: 1rem;
+                        overflow: unset;
+                        display: flex;
+                        flex-direction: column;
+                        padding-inline: 0;
+                        row-gap: 1rem;
+
+                        .script-cont{
+                            display: flex;
+                            flex-direction: column;
+                            gap: ngx-variables.$spacing-md;
+                        }
                 }
             }
         }

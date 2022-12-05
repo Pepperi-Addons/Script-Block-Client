@@ -37,8 +37,8 @@
     }
 
     &.defaultScript{
-        @include ngx-mixins.pep-state-focus(true); 
-        //border-color: Orange;
+       // @include ngx-mixins.pep-state-focus(true); 
+        border-width: 2px;
     }
 
 }

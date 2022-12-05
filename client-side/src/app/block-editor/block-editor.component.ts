@@ -204,7 +204,7 @@ export class ScriptBlockClientEditorComponent implements OnInit {
         this.updateHostObject();
     }
 
-       drop(event: CdkDragDrop<string[]>) {
+    drop(event: CdkDragDrop<string[]>) {
         if (event.previousContainer === event.container) {
          moveItemInArray(this.configuration.scripts, event.previousIndex, event.currentIndex);
          for(let index = 0 ; index < this.configuration.scripts.length; index++){
@@ -214,12 +214,32 @@ export class ScriptBlockClientEditorComponent implements OnInit {
         } 
     }
 
+    // drop(event: CdkDragDrop<string[]>) {
+    //     if (event.previousContainer === event.container) {
+    //      moveItemInArray(this.configuration.cards, event.previousIndex, event.currentIndex);
+    //      for(let index = 0 ; index < this.configuration.cards.length; index++){
+    //         this.configuration.cards[index].id = index;
+    //      }
+    //       this.updateHostObject();
+    //     } 
+    // }
+
     onDragStart(event: CdkDragStart) {
-        //this.galleryService.changeCursorOnDragStart();
+        this.changeCursorOnDragStart();
     }
 
     onDragEnd(event: CdkDragEnd) {
-        //this.galleryService.changeCursorOnDragEnd();
+        this.changeCursorOnDragEnd();
+    }
+
+    changeCursorOnDragStart() {
+        document.body.classList.add('inheritCursors');
+        document.body.style.cursor = 'grabbing';
+    }
+
+    changeCursorOnDragEnd() {
+        document.body.classList.remove('inheritCursors');
+        document.body.style.cursor = 'unset';
     }
 
     onScriptBlockFieldChange(key, event){
