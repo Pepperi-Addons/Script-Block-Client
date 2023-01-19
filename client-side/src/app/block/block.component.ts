@@ -54,7 +54,7 @@ export class ScriptBlockClientComponent implements OnInit {
         //check for script key equal to ScriptKey param
         //if not check if there is default script on the block
         let  script = this.configuration.scripts.filter(scr => scr.key === scriptKey);
-        if(script.length == 0){
+        if(script == null || script.length == 0){
                 script = this.configuration.scripts.filter(scr => scr.isDefaultScript === true);
         }
 
