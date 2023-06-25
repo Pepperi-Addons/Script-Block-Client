@@ -14,9 +14,6 @@
   "PublishConfig": {
     "ClientStack": "ng14",
     "Dependencies": {
-    },
-    "CPISide": [
-      "addon-cpi.ts"
-    ]
+    }
   }
 }
